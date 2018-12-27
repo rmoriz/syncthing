@@ -24,7 +24,7 @@ HEALTHCHECK --interval=1m --timeout=10s \
   CMD nc -z localhost 8384 || exit 1
 
 ENTRYPOINT \
-  chown "${PUID}:${PGID}" /var/syncthing \
+  chown -R "${PUID}:${PGID}" /var/syncthing \
   && su-exec "${PUID}:${PGID}" \
      env HOME=/var/syncthing \
      /bin/syncthing \
